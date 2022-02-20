@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a href="/" class="navbar-brand">
+        <img src="https://freesvg.org/img/Popcorn.png" alt="popcorn" width="100px" height="100px">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        arial-controls="navbarsupportedContent" arial-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto m-2">
+            <li class="nav-item active">
+                <a href="/" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="/movie" class="nav-link">Movies</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Genres
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a href="/movie/genre/action" class="dropdown-item">Action</a>
+                    <a href="/movie/genre/horror" class="dropdown-item">Horror </a>
+                    <a href="/movie/genre/comedy" class="dropdown-item">Comedy </a>
+                    <a href="/movie/genre/adventure" class="dropdown-item">Adventure </a>
+                    <a href="/movie/genre/sci-fi" class="dropdown-item">Sci-fi </a>
+                    <a href="/movie/genre/drama" class="dropdown-item">Drama </a>
+                    <a href="/movie/genre/fantasy" class="dropdown-item">Fantasy </a>
+                    <a href="/movie/genre/thriller" class="dropdown-item">Thriller </a>
+                </div>
+
+            </li>
+
+
+            <% if (user) { %>
+                <li class="nav-item">
+                    <a href="/movie/new" class="nav-link">Add Movie</a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/logout" class="nav-link ">Log Out</a>
+                </li>
+                <% } else { %>
+                    <li class="nav-item">
+                        <a href="/signup" class="nav-link ">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/login" class="nav-link">Log In</a>
+                    </li>
+                    <% } %>
+        </ul>
+
+        <form action="/movie/search" method="GET" class="d-flex my-2 my-lg-0">
+            <input type="search" name="searchTerm" class="form-control me-2" placeholder="search" aria-label="search">
+            <button class="btn btn-outline-success h-25" type="submit">
+                Search
+            </button>
+        </form>
+
+
+    </div>
+    <!-- </div> -->
+</nav>
+<div class="container my-3">
+    <%if(successMessage && successMessage.length> 0){%>
+        <div class="alert alert-success alert-dismissible fade show " role="alert">
+            <%= successMessage %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                </button>
+        </div>
+        <%}%>
+            <%if(errorMessage && errorMessage.length> 0){%>
+                <div class="alert alert-warning alert-dismissible fade show " role="alert">
+                    <%= errorMessage %>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                </div>
+                <%}%>
+</div>
